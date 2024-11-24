@@ -1,6 +1,9 @@
 package com.education.TDE.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "professores")
@@ -20,6 +23,10 @@ public class Professor {
 
     @Column
     private String especialidade;
+
+    @OneToMany(mappedBy = "professor")
+    @JsonIgnoreProperties("professor")
+    private List<Disciplina> disciplinas;
 
     public Integer getId() {
         return id;
@@ -59,5 +66,13 @@ public class Professor {
 
     public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
+    }
+
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
     }
 }

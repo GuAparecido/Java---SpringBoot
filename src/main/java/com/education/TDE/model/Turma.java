@@ -1,6 +1,9 @@
 package com.education.TDE.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table (name = "turmas")
@@ -15,8 +18,13 @@ public class Turma {
     @Column
     private Integer semestre;
 
-    @Column
-    private Integer curso_id;
+    @ManyToOne
+    @JoinColumn(name = "curso_id", referencedColumnName = "id")
+    private Curso curso;
+
+    @OneToMany(mappedBy = "turma")
+    @JsonIgnoreProperties("turma")
+    private List<Matricula> matriculas;
 
     public Integer getId() {
         return id;
@@ -42,11 +50,19 @@ public class Turma {
         this.semestre = semestre;
     }
 
-    public Integer getCurso_id() {
-        return curso_id;
+    public Curso getCurso() {
+        return curso;
     }
 
-    public void setCurso_id(Integer curso_id) {
-        this.curso_id = curso_id;
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
+
+    public List<Matricula> getMatriculas() {
+        return matriculas;
+    }
+
+    public void setMatriculas(List<Matricula> matriculas) {
+        this.matriculas = matriculas;
     }
 }
