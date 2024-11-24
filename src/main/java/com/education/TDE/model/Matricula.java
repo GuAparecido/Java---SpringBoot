@@ -1,5 +1,6 @@
 package com.education.TDE.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -14,10 +15,12 @@ public class Matricula {
 
     @ManyToOne
     @JoinColumn(name = "aluno_id", referencedColumnName = "id")
+    @JsonIgnore
     private Aluno aluno;
 
     @ManyToOne
     @JoinColumn(name = "turma_id", referencedColumnName = "id")
+    @JsonIgnore
     private Turma turma;
 
     @OneToMany(mappedBy = "matricula")

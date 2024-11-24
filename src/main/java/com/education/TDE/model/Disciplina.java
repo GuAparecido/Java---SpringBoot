@@ -1,5 +1,6 @@
 package com.education.TDE.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -16,14 +17,16 @@ public class Disciplina {
     private String nome;
 
     @Column
-    private Integer codigo;
+    private String codigo;
 
     @ManyToOne
     @JoinColumn(name = "curso_id", referencedColumnName = "id")
+    @JsonIgnore
     private Curso curso;
 
     @ManyToOne
     @JoinColumn(name = "professor_id", referencedColumnName = "id")
+    @JsonIgnore
     private Professor professor;
 
     @OneToMany(mappedBy = "disciplina")
@@ -46,11 +49,11 @@ public class Disciplina {
         this.nome = nome;
     }
 
-    public Integer getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Integer codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 

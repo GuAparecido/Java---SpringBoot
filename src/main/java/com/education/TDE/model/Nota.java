@@ -1,5 +1,6 @@
 package com.education.TDE.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -19,10 +20,12 @@ public class Nota {
 
     @ManyToOne
     @JoinColumn(name = "matricula_id", referencedColumnName = "id")
+    @JsonIgnore
     private Matricula matricula;
 
     @ManyToOne
     @JoinColumn(name = "disciplina_id", referencedColumnName = "id")
+    @JsonIgnore
     private Disciplina disciplina;
 
     public Integer getId() {
@@ -53,7 +56,7 @@ public class Nota {
         return matricula;
     }
 
-    public void setMatricula(Integer matricula) {
+    public void setMatricula(Matricula matricula) {
         this.matricula = matricula;
     }
 
@@ -61,8 +64,7 @@ public class Nota {
         return disciplina;
     }
 
-    public void setDisciplina(Integer disciplina) {
+    public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
     }
-
 }

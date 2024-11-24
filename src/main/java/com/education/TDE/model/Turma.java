@@ -1,5 +1,6 @@
 package com.education.TDE.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -20,6 +21,7 @@ public class Turma {
 
     @ManyToOne
     @JoinColumn(name = "curso_id", referencedColumnName = "id")
+    @JsonIgnore
     private Curso curso;
 
     @OneToMany(mappedBy = "turma")
