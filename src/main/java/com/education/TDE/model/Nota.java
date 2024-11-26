@@ -13,7 +13,7 @@ public class Nota {
     private Integer id;
 
     @Column
-    private Float nota;
+    private Double nota;
 
     @Column
     private Date data_lancamento;
@@ -36,11 +36,11 @@ public class Nota {
         this.id = id;
     }
 
-    public Float getNota() {
+    public Double getNota() {
         return nota;
     }
 
-    public void setNota(Float nota) {
+    public void setNota(Double nota) {
         this.nota = nota;
     }
 

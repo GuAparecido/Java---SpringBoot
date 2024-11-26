@@ -1,6 +1,9 @@
 package com.education.TDE.controller;
 
+import com.education.TDE.dto.MatriculaRequestDTO;
+import com.education.TDE.dto.NotaRequestDTO;
 import com.education.TDE.model.Matricula;
+import com.education.TDE.model.Nota;
 import com.education.TDE.repository.MatriculaRepository;
 import com.education.TDE.repository.NotaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,7 @@ public class MatriculaController {
     public ResponseEntity<List<Matricula>> findAll() {
         return ResponseEntity.ok(this.repository.findAll());
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Matricula> findById(@PathVariable Integer id) {
         Matricula matricula = this.repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Matrícula não encontrada"));

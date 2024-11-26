@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "api/turmas")
+@RequestMapping("api/turmas")
 public class TurmaController {
     @Autowired
     private TurmaRepository repository;
@@ -20,6 +20,7 @@ public class TurmaController {
     public ResponseEntity<List<Turma>> findAll() {
         return ResponseEntity.ok(this.repository.findAll());
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Turma> findById(@PathVariable Integer id) {
         Turma turma = this.repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Turma não encontrada"));
