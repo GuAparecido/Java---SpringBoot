@@ -15,11 +15,11 @@ public class CursoController {
     @Autowired
     private CursoRepository repository;
 
-
     @GetMapping()
     public ResponseEntity<List<Curso>> findAll() {
         return ResponseEntity.ok(this.repository.findAll());
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Curso> findById(@PathVariable Integer id) {
         Curso curso = this.repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Curso não encontrado"));

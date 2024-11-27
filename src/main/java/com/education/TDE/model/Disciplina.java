@@ -29,10 +29,6 @@ public class Disciplina {
     @JsonIgnore
     private Professor professor;
 
-    @OneToMany(mappedBy = "disciplina")
-    @JsonIgnoreProperties("disciplina")
-    private List<Nota> notas;
-
     public Integer getId() {
         return id;
     }
@@ -73,11 +69,4 @@ public class Disciplina {
         this.professor = professor;
     }
 
-    public List<Nota> getNotas() {
-        return notas;
-    }
-
-    public void setNotas(List<Nota> notas) {
-        this.notas = notas;
-    }
 }

@@ -2,7 +2,9 @@ package com.education.TDE.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.springframework.cglib.core.Local;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -16,7 +18,7 @@ public class Nota {
     private Double nota;
 
     @Column
-    private Date data_lancamento;
+    private LocalDate data_lancamento;
 
     @ManyToOne
     @JoinColumn(name = "matricula_id", referencedColumnName = "id")
@@ -44,11 +46,11 @@ public class Nota {
         this.nota = nota;
     }
 
-    public Date getData_lancamento() {
+    public LocalDate getData_lancamento() {
         return data_lancamento;
     }
 
-    public void setData_lancamento(Date data_lancamento) {
+    public void setData_lancamento(LocalDate data_lancamento) {
         this.data_lancamento = data_lancamento;
     }
 

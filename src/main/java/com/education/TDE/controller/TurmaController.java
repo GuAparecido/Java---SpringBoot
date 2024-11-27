@@ -18,6 +18,7 @@ public class TurmaController {
 
     @GetMapping()
     public ResponseEntity<List<Turma>> findAll() {
+
         return ResponseEntity.ok(this.repository.findAll());
     }
 
